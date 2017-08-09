@@ -55,9 +55,9 @@ census_df <- iowa_census_data %>%
     select(county, population, geometry) %>%
     inner_join(iowa_results, by = c("county" = "CountyName"))
 
-# Chuck Grassley’s August 2017 townhalls. Data from https://townhallproject.com/.
+# Chuck Grassley’s August 2017 town halls. Data from https://townhallproject.com/.
 # They don’t appear to have an API.
-# We geocode the townhall locations using the ggmap package.
+# We geocode the town hall locations using the ggmap package.
 
 grassley_townhalls_file <- "data/grassley_townhalls.RData"
 
@@ -101,7 +101,7 @@ if (!file.exists(grassley_townhalls_file)) {
 
 iowa_congressional_boundaries <- us_congressional(states = "Iowa", resolution = "low")
 
-# Functions for townhall and county popup labels for the maps.
+# Functions for town hall and county popup labels for the maps.
 
 town_hall_create_label <- function(df) {
     paste(sep = "<br/>",

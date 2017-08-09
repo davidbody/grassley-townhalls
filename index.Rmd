@@ -1,5 +1,5 @@
 ---
-title: "Chuck Grassley's August 2017 Townhalls"
+title: "Chuck Grassley's August 2017 Town Halls"
 output: html_document
 ---
 
@@ -15,7 +15,7 @@ Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year
 
 It's been [pointed out](https://iowastartingline.com/2016/09/01/look-at-this-map-of-counties-chuck-grassley-avoids-public-events-in/) that Grassley counts a mixture of public and private events, and the public events tend to be in relatively remote locations far from Iowa's population centers.
 
-August 2017 is shaping up to be no different. Mr. Grassley has scheduled six public townhall meetings this month.
+August 2017 is shaping up to be no different. Mr. Grassley has scheduled six public town hall meetings this month.
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -24,26 +24,26 @@ grassley_townhalls %>% mutate(day = format(as_date(date), "%A")) %>% select(day,
 
 The first thing to note is that without exception, these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator.
 
-The other thing that is striking is where Mr. Grassley has scheduled his public townhalls. As the following map shows, all six of Mr. Grassley's public townhall meetings are in western Iowa, far from most of Iowa's population centers. Only two of Iowa's four Congressional districts are represented.
+The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, all six of Mr. Grassley's public town hall meetings are in western Iowa, far from most of Iowa's population centers. Only two of Iowa's four Congressional districts are represented.
 
-### Grassley townhalls with population.
+### Grassley town halls vs population.
 
 ```{r, echo=FALSE}
 pop_map
 ```
 
-Iowa's four Congressional districts are outlined. Click on the townhall markers and counties for more information.
+Congressional districts are outlined. Click on the town hall markers and counties for more information.
 
-Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all six counties hosting Grassley townhalls by a landslide.
+Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all six counties hosting Grassley town halls by a landslide.
 
 
-### Grassley townhalls with Trump vote %.
+### Grassley town halls vs Trump vote %.
 
 ```{r, echo=FALSE}
 vote_map
 ```
 
-Iowa's four Congressional districts are outlined. Click on townhall markers and counties for more information.
+Congressional districts are outlined. Click on town hall markers and counties for more information.
 
 The two Congressional districts Grassley will visit are represented by Steve King and David Young, also strong Trump supporters.
 
