@@ -22,7 +22,7 @@ library(knitr)
 grassley_townhalls %>% mutate(day = format(as_date(date), "%A")) %>% select(day, date, time, location) %>% kable
 ```
 
-The first thing to note that without exception, these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator.
+The first thing to note is that without exception, these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator.
 
 The other thing that is striking is where Mr. Grassley has scheduled his public townhalls. As the following map shows, all six of Mr. Grassley's public townhall meetings are in western Iowa, far from most of Iowa's population centers. Only two of Iowa's four Congressional districts are represented.
 
