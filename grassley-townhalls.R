@@ -144,7 +144,7 @@ pop_map <- census_df %>%
                 color = ~ pop_pal(log(population))) %>%
     addLegend("bottomright",
               colors = legend_colors,
-              labels = legend_pops,
+              labels = format(legend_pops, big.mark = ","),
               values = ~ population,
               title = "Population",
               opacity = 1) %>%
