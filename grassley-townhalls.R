@@ -8,7 +8,7 @@ library(stringr)
 library(tidycensus)
 library(USAboundaries)
 
-setwd("~/work/data/grassley-townhalls")
+# setwd("~/work/data/grassley-townhalls")
 
 iowa_census_file <- "data/iowa_census.RData"
 
