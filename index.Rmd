@@ -28,7 +28,7 @@ The first thing to note is that without exception, these fall during normal work
 
 The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, all six of Mr. Grassley's public town hall meetings are in western Iowa, far from most of Iowa's population centers. Only two of Iowa's four Congressional districts are represented.
 
-### Grassley town halls vs population.
+### Grassley town halls vs population
 
 ```{r, echo=FALSE}
 pop_map
@@ -39,7 +39,7 @@ Congressional districts are outlined. Click on the town hall markers and countie
 Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all six counties hosting Grassley town halls by a landslide.
 
 
-### Grassley town halls vs Trump vote %.
+### Grassley town halls vs Trump vote %
 
 ```{r, echo=FALSE}
 vote_map
