@@ -13,7 +13,9 @@ source("grassley-townhalls.R")
 
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
-It's been [pointed out](https://iowastartingline.com/2016/09/01/look-at-this-map-of-counties-chuck-grassley-avoids-public-events-in/) that Grassley counts a mixture of public and private events, and the public events tend to be in relatively remote locations far from Iowa's population centers.
+It's been [pointed out](https://iowastartingline.com/2016/09/01/look-at-this-map-of-counties-chuck-grassley-avoids-public-events-in/) that Grassley counts a mixture of public and private events, and the public events tend to be in relatively remote locations far from Iowa's population centers. In fact, according to [this source](http://fakegrassley.com), since 2011
+
+> Senator Grassley has not held an open public event as part of his annual 99 county tour in nearly all of the state’s major population centers, including no public meetings in Polk, Linn, or 8 of Iowa’s most populous 10 counties.
 
 August 2017 is shaping up to be no different. Mr. Grassley has scheduled six public town hall meetings this month.
 
