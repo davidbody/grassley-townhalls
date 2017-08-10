@@ -54,9 +54,13 @@ So it looks like Mr. Grassley is playing it safe again, holding public meetings 
 <br/>
 <br/>
 
-David W. Body
+David W. Body, August 9, 2017
 
-2017-Aug-9
+Data sources:
+
+* Population from U.S. Census American Community Survey (via `tidycensus` package)
+* Election results from [Data For Democracy]( https://data.world/data4democracy/election-transparency)
+* Town halls from [The Town Hall Project](https://townhallproject.com/)
 
 Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
