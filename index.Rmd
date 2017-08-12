@@ -1,5 +1,5 @@
 ---
-title: "Chuck Grassley's August 2017 Town Halls"
+title: "Chuck Grassley’s public town halls are at places and times that make it difficult for most Iowans to attend"
 output: html_document
 ---
 
