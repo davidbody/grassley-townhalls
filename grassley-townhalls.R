@@ -126,7 +126,10 @@ county_create_label <- function(df) {
 }
 
 grassley_townhalls <- grassley_townhalls %>%
-    mutate(townhall_popup = town_hall_create_label(.))
+    mutate(townhall_popup = town_hall_create_label(.)) %>%
+    inner_join(census_df, by = "county") %>%
+    mutate(county_population = population) %>%
+    select(location, county, county_population, rPct, date, time, lon, lat, townhall_popup)
 
 # Population map
 
@@ -178,3 +181,4 @@ vote_map <- census_df %>%
               title = "Trump Vote %",
               opacity = 1) %>%
     addMarkers(data = grassley_townhalls, lng = ~ lon, lat = ~ lat, popup = ~ townhall_popup)
+

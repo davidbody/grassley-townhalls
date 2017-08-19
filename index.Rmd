@@ -52,6 +52,18 @@ The two Congressional districts Grassley will visit are represented by Steve Kin
 So it looks like Mr. Grassley is playing it safe again, holding public meetings in only heavily Republican areas, far from where most of his constituents live, and at times that would require even most local constituents to miss work in order to attend.
 
 <br/>
+<hr/>
+
+```{r, echo=FALSE}
+library(knitr)
+grassley_townhalls %>%
+    mutate(trump_vote = sprintf("%1.2f%%", 100 * rPct)) %>%
+    select(date, location, county, county_population, trump_vote) %>%
+    kable(caption = "Grassley town hall summary",
+          col.names = c("Date", "Location", "County", "County Population", "County Trump Vote"),
+          align = "lllrr")
+```
+
 <br/>
 
 David W. Body, August 9, 2017
