@@ -121,7 +121,7 @@ county_create_label <- function(df) {
     paste(sep = "<br/>",
           paste0("<b>", df$county, "</b>"),
           paste("<b>Population:</b>", df$population),
-          paste("<b>Trump vote:</b>", sprintf("%1.2f%%", 100 * df$rDRPct))
+          paste("<b>Trump vote:</b>", sprintf("%1.2f%%", 100 * df$rPct))
     )
 }
 
@@ -171,7 +171,7 @@ vote_map <- census_df %>%
                 stroke = FALSE,
                 smoothFactor = 0,
                 fillOpacity = 0.7,
-                color = ~ vote_pal(rDRPct)) %>%
+                color = ~ vote_pal(rPct)) %>%
     addLegend("bottomright",
               pal = vote_pal,
               values = ~ dDRPct,
