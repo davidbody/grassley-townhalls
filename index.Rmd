@@ -66,15 +66,16 @@ grassley_townhalls %>%
 
 <br/>
 
-David W. Body, August 9, 2017
+Updated August 19, 2017
 
 Data sources:
 
-* Population from U.S. Census American Community Survey (via `tidycensus` package)
+* Population from U.S. Census 2015 American Community Survey (via `tidycensus` package)
 * Election results from [Data For Democracy]( https://data.world/data4democracy/election-transparency)
 * Town halls from [The Town Hall Project](https://townhallproject.com/)
 
 Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
+Contact: [David W. Body](https://twitter.com/david_body)
 
 ---
