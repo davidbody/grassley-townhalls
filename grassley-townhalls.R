@@ -3,6 +3,7 @@ library(tidyverse)
 library(leaflet)
 library(lubridate)
 library(RColorBrewer)
+library(scales)
 library(sf)
 library(stringr)
 library(tidycensus)
@@ -182,3 +183,33 @@ vote_map <- census_df %>%
               opacity = 1) %>%
     addMarkers(data = grassley_townhalls, lng = ~ lon, lat = ~ lat, popup = ~ townhall_popup)
 
+town_hall_counties <- grassley_townhalls$county
+
+pop_bars <- census_df %>%
+    mutate(town_hall_county = county %in% town_hall_counties) %>%
+    mutate(county = reorder(county, population)) %>%
+    ggplot(aes(county, population, fill = town_hall_county)) +
+    theme_minimal() +
+    xlab(NULL) +
+    geom_col(show.legend = FALSE) +
+    coord_flip() +
+    scale_y_continuous(label = comma) +
+    scale_fill_manual(values = c("slategray3", "navyblue")) +
+    labs(title = "Iowa counties by population",
+         subtitle = "Town hall counties highlighted",
+         y = "Population")
+
+vote_bars <- census_df %>%
+    mutate(town_hall_county = county %in% town_hall_counties) %>%
+    mutate(county = reorder(county, rPct)) %>%
+    ggplot(aes(county, rPct * 100, fill = town_hall_county)) +
+    theme_minimal() +
+    xlab(NULL) +
+    geom_col(show.legend = FALSE) +
+    geom_hline(yintercept = 50) +
+    coord_flip() +
+    scale_y_continuous(limits = c(0, 100)) +
+    scale_fill_manual(values = c("slategray3", "red")) +
+    labs(title = "Iowa counties by Trump Vote %",
+         subtitle = "Town hall counties highlighted",
+         y = "Trump Vote %")

@@ -54,6 +54,8 @@ So it looks like Mr. Grassley is playing it safe again, holding public meetings 
 <br/>
 <hr/>
 
+#### Supplemental material
+
 ```{r, echo=FALSE}
 library(knitr)
 grassley_townhalls %>%
@@ -62,6 +64,14 @@ grassley_townhalls %>%
     kable(caption = "Grassley town hall summary",
           col.names = c("Date", "Location", "County", "County Population", "County Trump Vote"),
           align = "lllrr")
+```
+
+```{r, echo=FALSE, fig.height=10}
+pop_bars
+```
+
+```{r, echo=FALSE, fig.height=10}
+vote_bars
 ```
 
 <br/>
