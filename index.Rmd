@@ -76,7 +76,7 @@ vote_bars
 
 <br/>
 
-Updated August 19, 2017
+Updated August 20, 2017
 
 Data sources:
 
