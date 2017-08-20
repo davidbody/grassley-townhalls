@@ -137,7 +137,7 @@ grassley_townhalls <- grassley_townhalls %>%
 # Color palette based on log(population)
 pop_pal <- colorNumeric(brewer.pal(9, "Blues"), c(log(3000), log(500000)))
 
-legend_pops <- seq(50000, 450000, by = 100000)
+legend_pops <- c(10000, seq(50000, 450000, by = 100000))
 legend_colors <- lapply(log(legend_pops), pop_pal)
 
 pop_map <- census_df %>%
@@ -156,7 +156,7 @@ pop_map <- census_df %>%
               colors = legend_colors,
               labels = format(legend_pops, big.mark = ","),
               values = ~ population,
-              title = "Population",
+              title = "County Population",
               opacity = 1) %>%
     addMarkers(data = grassley_townhalls, lng = ~ lon, lat = ~ lat, popup = ~ townhall_popup)
 
