@@ -86,6 +86,6 @@ Data sources:
 
 Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
-Contact: [David W. Body](https://twitter.com/david_body)
+Author: [David W. Body](https://twitter.com/david_body)
 
 ---
