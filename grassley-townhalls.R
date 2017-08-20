@@ -177,7 +177,7 @@ vote_map <- census_df %>%
                 color = ~ vote_pal(rPct)) %>%
     addLegend("bottomright",
               pal = vote_pal,
-              values = ~ dDRPct,
+              values = ~ dPct,
               title = "Trump Vote %",
               opacity = 1) %>%
     addMarkers(data = grassley_townhalls, lng = ~ lon, lat = ~ lat, popup = ~ townhall_popup)
