@@ -9,8 +9,6 @@ library(stringr)
 library(tidycensus)
 library(USAboundaries)
 
-# setwd("~/work/data/grassley-townhalls")
-
 iowa_census_file <- "data/iowa_census.RData"
 
 if (!dir.exists("data")) {
@@ -72,25 +70,53 @@ if (!file.exists(grassley_townhalls_file)) {
                      "Primghar, IA",
                      "Sibley, IA",
                      "Mapleton, IA",
-                     "Harlan, IA"),
+                     "Harlan, IA",
+                     "Boone, IA",
+                     "Logan, IA",
+                     "Sac City, IA",
+                     "Bloomfield, IA",
+                     "Keosaqua, IA",
+                     "Wapello, IA",
+                     "Manchester, IA"),
         county = c("Ringgold",
                    "Taylor",
                    "O'Brien",
                    "Osceola",
                    "Monona",
-                   "Shelby"),
+                   "Shelby",
+                   "Boone",
+                   "Harrison",
+                   "Sac",
+                   "Davis",
+                   "Van Buren",
+                   "Louisa",
+                   "Delaware"),
         date = c("2017-08-23",
                  "2017-08-24",
                  "2017-08-29",
                  "2017-08-30",
                  "2017-08-31",
-                 "2017-08-31"),
+                 "2017-08-31",
+                 "2017-10-9",
+                 "2018-01-12",
+                 "2018-01-13",
+                 "2018-02-21",
+                 "2018-02-22",
+                 "2018-02-23",
+                 "2018-02-23"),
         time = c("3:45 PM, CDT",
                  "11:30 AM, CDT",
                  "3:45 PM, CDT",
                  "08:00 AM, CDT",
                  "10:00 AM, CDT",
-                 "2:45 PM, CDT "),
+                 "2:45 PM, CDT",
+                 "2:15 PM, CDT",
+                 "10:45 AM, CST",
+                 "10:30 AM, CST",
+                 "3:45 PM, CST",
+                 "8:00 AM, CST",
+                 "10:15 AM, CST",
+                 "4:00 PM, CST"),
         stringsAsFactors = FALSE)
 
     # Geocode locations
