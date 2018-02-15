@@ -317,3 +317,18 @@ vote_bars <- census_df %>%
          subtitle = "Counties with zero public town halls since 2011 highlighted",
          y = "Trump Vote %")
 
+# Total town halls by year plot
+
+townhalls_by_year <- townhall_counts %>%
+  filter(year < 2018) %>%
+  group_by(year) %>%
+  summarize(meetings = sum(count))
+
+townhalls_by_year_plot <- townhalls_by_year %>%
+  ggplot(aes(year, meetings, group = 1)) +
+  geom_line() +
+  scale_y_continuous(limits = c(0, NA)) +
+  theme_minimal() +
+  labs(title = "Total Grassley public town hall meetings by year 2011-2017",
+       x = "Year",
+       y = "Town halls")

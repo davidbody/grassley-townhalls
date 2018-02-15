@@ -73,6 +73,16 @@ pop_bars
 vote_bars
 ```
 
+<br />
+
+#### Finally, the following chart shows the total number of Grassley public town hall meetings by year from 2011 through 2017.
+
+```{r, echo=FALSE}
+townhalls_by_year_plot
+```
+
+Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls state wide in 2017.
+
 <br/>
 
 Updated `r format(file.mtime("index.Rmd"), "%B %e, %Y")`
