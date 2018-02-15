@@ -92,6 +92,7 @@ Data sources:
 * Population from U.S. Census 2015 American Community Survey (via `tidycensus` package)
 * Election results from [Data For Democracy]( https://data.world/data4democracy/election-transparency)
 * Town halls from [The Town Hall Project](https://townhallproject.com/) and from [Senator Grassley's web site](https://www.grassley.senate.gov/news)
+* Historical town hall counts from [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) by [Progress Iowa](http://progressiowa.org/).
 
 Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
