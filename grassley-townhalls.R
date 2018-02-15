@@ -7,7 +7,7 @@ library(scales)
 library(sf)
 library(stringr)
 library(tidycensus)
-library(USAboundaries)
+library(readxl)
 
 iowa_census_file <- "data/iowa_census.RData"
 
@@ -51,12 +51,13 @@ iowa_results <- election_results %>%
 
 census_df <- iowa_census_data %>%
     mutate(county = gsub(" County, Iowa", "", NAME), population = estimate) %>%
-    select(county, population, geometry) %>%
+    select(GEOID, county, population, geometry) %>%
     inner_join(iowa_results, by = c("county" = "CountyName"))
 
 # Chuck Grassley’s August 2017 town halls. Data from https://townhallproject.com/.
 # They don’t appear to have an API.
 # We geocode the town hall locations using the ggmap package.
+# Updated with subsequent town halls from https://www.grassley.senate.gov/news
 
 grassley_townhalls_file <- "data/grassley_townhalls.RData"
 
@@ -128,12 +129,6 @@ if (!file.exists(grassley_townhalls_file)) {
     load(grassley_townhalls_file)
 }
 
-# grassley_townhalls
-
-# Use congressional district boundaries from USAboundaries package.
-
-iowa_congressional_boundaries <- us_congressional(states = "Iowa", resolution = "low")
-
 # Functions for town hall and county popup labels for the maps.
 
 town_hall_create_label <- function(df) {
@@ -171,8 +166,6 @@ pop_map <- census_df %>%
     st_transform(crs = "+init=epsg:4326") %>%
     leaflet() %>%
     addProviderTiles(provider = "CartoDB.Positron") %>%
-    addPolygons(data = iowa_congressional_boundaries,
-                color = "black") %>%
     addPolygons(popup = ~ county_popup,
                 stroke = FALSE,
                 smoothFactor = 0,
@@ -195,8 +188,6 @@ vote_map <- census_df %>%
     st_transform(crs = "+init=epsg:4326") %>%
     leaflet() %>%
     addProviderTiles(provider = "CartoDB.Positron") %>%
-    addPolygons(data = iowa_congressional_boundaries,
-                color = "black") %>%
     addPolygons(popup = ~ county_popup,
                 stroke = FALSE,
                 smoothFactor = 0,
@@ -208,6 +199,90 @@ vote_map <- census_df %>%
               title = "Trump Vote %",
               opacity = 1) %>%
     addMarkers(data = grassley_townhalls, lng = ~ lon, lat = ~ lat, popup = ~ townhall_popup)
+
+# Town hall count map
+
+# town halls from 2011 - 2017
+townhall_counts <- read_excel("data/Chuck Grassley Public Town Meetings 2011-2017.xlsx", skip = 1)
+
+townhall_counts <- townhall_counts %>%
+  select(-starts_with("TOTAL")) %>%
+  filter(County != "TOTALS") %>%
+  gather(year, count, -County)
+
+townhall_counts_after_2017 <- grassley_townhalls %>%
+  filter(year(date) > 2017) %>%
+  mutate(County = county, year = as.character(year(date))) %>%
+  select(County, year) %>%
+  group_by(County, year) %>%
+  summarize(count = n()) %>%
+  ungroup()
+
+townhall_counts <- rbind(townhall_counts, townhall_counts_after_2017)
+
+iowa_county_data_url <- "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2017_Gazetteer/2017_gaz_counties_19.txt"
+
+iowa_county_data_file <- "data/iowa_county_data.RData"
+
+# we need latitudes and longitudes to center labels in each county
+
+if (!file.exists(iowa_county_data_file)) {
+  iowa_county_data <- read_tsv(iowa_county_data_url, col_types = cols(
+    USPS = col_character(),
+    GEOID = col_character(),
+    ANSICODE = col_character(),
+    NAME = col_character(),
+    ALAND = col_double(),
+    AWATER = col_integer(),
+    ALAND_SQMI = col_double(),
+    AWATER_SQMI = col_double(),
+    INTPTLAT = col_double(),
+    INTPTLONG = col_double()
+  ))
+  save(iowa_county_data, file = iowa_county_data_file)
+} else {
+  load(iowa_county_data_file)
+}
+
+iowa_county_data <- iowa_county_data %>%
+  select(GEOID, NAME, INTPTLAT, INTPTLONG) %>%
+  mutate(lat = INTPTLAT, lon = INTPTLONG)
+
+townhall_count_summary <- townhall_counts %>%
+  group_by(County) %>%
+  summarize(meetings = sum(count))
+
+census_df <- census_df %>%
+  inner_join(townhall_count_summary, by = c("county" = "County")) %>%
+  inner_join(iowa_county_data, by = c("GEOID" = "GEOID")) %>%
+  select(county, population, geometry, lat, lon, meetings, rPct)
+
+townhall_count_map <- census_df %>%
+  mutate(county_popup = county_create_label(.)) %>%
+  st_transform(crs = "+init=epsg:4326") %>%
+  leaflet() %>%
+  addProviderTiles(provider = "CartoDB.Positron") %>%
+  addPolygons(popup = ~ county_popup,
+              stroke = FALSE,
+              smoothFactor = 0,
+              fillOpacity = 0.7,
+              color = ~ pop_pal(log(population))) %>%
+  addLegend("bottomright",
+            colors = legend_colors,
+            labels = format(legend_pops, big.mark = ","),
+            values = ~ population,
+            title = "County Population",
+            opacity = 1) %>%
+  addLabelOnlyMarkers(lng = ~ lon, lat = ~ lat,
+                      label = ~ as.character(meetings),
+                      labelOptions = labelOptions(noHide = T,
+                                                  direction = 'top',
+                                                  textOnly = T,
+                                                  style = list(
+                                                    "font-size" = "20px"
+                                                  )))
+
+# County bar charts
 
 town_hall_counties <- grassley_townhalls$county
 
