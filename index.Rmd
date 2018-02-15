@@ -11,22 +11,24 @@ knitr::opts_chunk$set(echo = TRUE)
 source("grassley-townhalls.R")
 ```
 
+UPDATE: This document has been updated with Senator Grassley's town halls through February 2018.
+
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
 It's been [pointed out](https://iowastartingline.com/2016/09/01/look-at-this-map-of-counties-chuck-grassley-avoids-public-events-in/) that Grassley counts a mixture of public and private events, and the public events tend to be in relatively remote locations far from Iowa's population centers. In fact, according to [this source](http://fakegrassley.com), since 2011
 
 > Senator Grassley has not held an open public event as part of his annual 99 county tour in nearly all of the state’s major population centers, including no public meetings in Polk, Linn, or 8 of Iowa’s most populous 10 counties.
 
-August 2017 is shaping up to be no different. Mr. Grassley has scheduled six public town hall meetings this month.
+Senator Grassley has held or scheduled `r nrow(grassley_townhalls)` town halls since August 2017.
 
 ```{r, echo=FALSE}
 library(knitr)
 grassley_townhalls %>% mutate(day = format(as_date(date), "%A")) %>% select(day, date, time, location) %>% kable
 ```
 
-The first thing to note is that without exception, these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator.
+The first thing to note is that most of these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator. The only exception was a Saturday morning town hall held in Sac County.
 
-The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, all six of Mr. Grassley's public town hall meetings are in western Iowa, far from most of Iowa's population centers. Only two of Iowa's four Congressional districts are represented.
+The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, Mr. Grassley's public town hall meetings tend to be in rural areas far from most of Iowa's population centers. A possible exception was the town hall held in Boone, which is relatively close to the more heavily populated Dallas, Polk, Story, and Webster counties, but still a 50-mile drive from Des Moines.
 
 ### Grassley town halls vs population
 
@@ -34,9 +36,9 @@ The other thing that is striking is where Mr. Grassley has scheduled his public 
 pop_map
 ```
 
-Congressional districts are outlined. Click on the town hall markers and counties for more information.
+Click on the town hall markers and counties for more information.
 
-Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all six counties hosting Grassley town halls by a landslide.
+Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all of the counties hosting Grassley's public town halls, and got more than 60% of the vote in all but Boone County.
 
 
 ### Grassley town halls vs Trump vote %
@@ -45,11 +47,19 @@ Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to 
 vote_map
 ```
 
-Congressional districts are outlined. Click on town hall markers and counties for more information.
+Click on town hall markers and counties for more information.
 
-The two Congressional districts Grassley will visit are represented by Steve King and David Young, also strong Trump supporters.
+So it looks like Mr. Grassley is continuing to play it safe, holding public meetings in only heavily Republican areas, far from where most of his constituents live, and at times that would require even most local constituents to miss work in order to attend.
 
-So it looks like Mr. Grassley is playing it safe again, holding public meetings in only heavily Republican areas, far from where most of his constituents live, and at times that would require even most local constituents to miss work in order to attend.
+### Grassley town halls since 2011
+
+Here we combine data from a [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) compiled by [Progress Iowa](http://progressiowa.org/) on Mr. Grassley's town halls from 2011 through 2017 with his 2018 town halls held or scheduled to date. The map shows the total number of Mr. Grassley's public town halls in each county since 2011.
+
+```{r, echo=FALSE}
+townhall_count_map
+```
+
+Click on counties for more information.
 
 <br/>
 <hr/>
@@ -76,13 +86,13 @@ vote_bars
 
 <br/>
 
-Updated August 20, 2017
+Updated `r format(file.mtime("index.Rmd"), "%B %e, %Y")`
 
 Data sources:
 
 * Population from U.S. Census 2015 American Community Survey (via `tidycensus` package)
 * Election results from [Data For Democracy]( https://data.world/data4democracy/election-transparency)
-* Town halls from [The Town Hall Project](https://townhallproject.com/)
+* Town halls from [The Town Hall Project](https://townhallproject.com/) and from [Senator Grassley's web site](https://www.grassley.senate.gov/news)
 
 Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
