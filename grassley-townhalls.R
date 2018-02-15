@@ -284,33 +284,36 @@ townhall_count_map <- census_df %>%
 
 # County bar charts
 
-town_hall_counties <- grassley_townhalls$county
+zero_town_hall_counties <- census_df[census_df$meetings == 0,]$county
 
 pop_bars <- census_df %>%
-    mutate(town_hall_county = county %in% town_hall_counties) %>%
+    mutate(zero_town_hall_county = county %in% zero_town_hall_counties) %>%
     mutate(county = reorder(county, population)) %>%
-    ggplot(aes(county, population, fill = town_hall_county)) +
+    ggplot(aes(county, population, fill = zero_town_hall_county)) +
     theme_minimal() +
     xlab(NULL) +
     geom_col(show.legend = FALSE) +
+    geom_text(aes(county, population, label = as.character(meetings)), position = position_nudge(y = 7000)) +
     coord_flip() +
     scale_y_continuous(label = comma) +
     scale_fill_manual(values = c("slategray3", "navyblue")) +
-    labs(title = "Iowa counties by population",
-         subtitle = "Town hall counties highlighted",
+    labs(title = "Iowa counties and Grassley public town hall counts by population",
+         subtitle = "Counties with zero public town halls since 2011 highlighted",
          y = "Population")
 
 vote_bars <- census_df %>%
-    mutate(town_hall_county = county %in% town_hall_counties) %>%
+    mutate(zero_town_hall_county = county %in% zero_town_hall_counties) %>%
     mutate(county = reorder(county, rPct)) %>%
-    ggplot(aes(county, rPct * 100, fill = town_hall_county)) +
+    ggplot(aes(county, rPct * 100, fill = zero_town_hall_county)) +
     theme_minimal() +
     xlab(NULL) +
     geom_col(show.legend = FALSE) +
     geom_hline(yintercept = 50) +
+    geom_text(aes(county, rPct * 100, label = as.character(meetings)), position = position_nudge(y = 1.5)) +
     coord_flip() +
     scale_y_continuous(limits = c(0, 100)) +
-    scale_fill_manual(values = c("slategray3", "red")) +
-    labs(title = "Iowa counties by Trump Vote %",
-         subtitle = "Town hall counties highlighted",
+    scale_fill_manual(values = c("slategray3", "navyblue")) +
+    labs(title = "Iowa counties and Grassley public town hall counts by Trump vote %",
+         subtitle = "Counties with zero public town halls since 2011 highlighted",
          y = "Trump Vote %")
+

@@ -61,26 +61,15 @@ townhall_count_map
 
 Click on counties for more information.
 
-<br/>
-<hr/>
+<br />
 
-#### Supplemental material
+#### The following charts show Grassley public town hall meetings by county since 2011 ordered by population and Trump vote percent.
 
-```{r, echo=FALSE}
-library(knitr)
-grassley_townhalls %>%
-    mutate(trump_vote = sprintf("%1.2f%%", 100 * rPct)) %>%
-    select(date, location, county, county_population, trump_vote) %>%
-    kable(caption = "Grassley town hall summary",
-          col.names = c("Date", "Location", "County", "County Population", "County Trump Vote"),
-          align = "lllrr")
-```
-
-```{r, echo=FALSE, fig.height=10}
+```{r, echo=FALSE, fig.height=15}
 pop_bars
 ```
 
-```{r, echo=FALSE, fig.height=10}
+```{r, echo=FALSE, fig.height=15}
 vote_bars
 ```
 
