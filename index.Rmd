@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 source("grassley-townhalls.R")
 ```
 
-UPDATE: This document has been updated with Senator Grassley's town halls through February 2018.
+UPDATE: *This document has been updated with with historical data on Senator Grassley's town halls since 2011 and town halls held or schedule through February 2018.*
 
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
@@ -19,7 +19,7 @@ It's been [pointed out](https://iowastartingline.com/2016/09/01/look-at-this-map
 
 > Senator Grassley has not held an open public event as part of his annual 99 county tour in nearly all of the state’s major population centers, including no public meetings in Polk, Linn, or 8 of Iowa’s most populous 10 counties.
 
-Senator Grassley has held or scheduled `r nrow(grassley_townhalls)` town halls since August 2017.
+Let's take a look at the `r nrow(grassley_townhalls)` town halls Senator Grassley has held or scheduled since August 2017.
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -63,14 +63,10 @@ Click on counties for more information.
 
 <br />
 
-#### The following charts show Grassley public town hall meetings by county since 2011 ordered by population and Trump vote percent.
+#### Grassley public town halls by county population, with counts of town halls since 2011.
 
 ```{r, echo=FALSE, fig.height=15}
 pop_bars
-```
-
-```{r, echo=FALSE, fig.height=15}
-vote_bars
 ```
 
 <br />
@@ -81,9 +77,25 @@ vote_bars
 townhalls_by_year_plot
 ```
 
-Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls state wide in 2017.
+Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls statewide in 2017.
+
+It appears the 99-county "full Grassley" may not be quite what is used to be.
 
 <br/>
+
+#### Supplemental data
+
+Data used for the population and Trump vote percent maps in tabular form.
+
+```{r, echo=FALSE}
+library(knitr)
+grassley_townhalls %>%
+    mutate(trump_vote = sprintf("%1.2f%%", 100 * rPct)) %>%
+    select(date, location, county, county_population, trump_vote) %>%
+    kable(caption = "Grassley town hall summary",
+          col.names = c("Date", "Location", "County", "County Population", "County Trump Vote"),
+          align = "lllrr")
+```
 
 Updated `r format(file.mtime("index.Rmd"), "%B %e, %Y")`
 

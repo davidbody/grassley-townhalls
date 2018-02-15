@@ -282,7 +282,7 @@ townhall_count_map <- census_df %>%
                                                     "font-size" = "20px"
                                                   )))
 
-# County bar charts
+# County population bar chart
 
 zero_town_hall_counties <- census_df[census_df$meetings == 0,]$county
 
@@ -301,22 +301,6 @@ pop_bars <- census_df %>%
          subtitle = "Counties with zero public town halls since 2011 highlighted",
          y = "Population")
 
-vote_bars <- census_df %>%
-    mutate(zero_town_hall_county = county %in% zero_town_hall_counties) %>%
-    mutate(county = reorder(county, rPct)) %>%
-    ggplot(aes(county, rPct * 100, fill = zero_town_hall_county)) +
-    theme_minimal() +
-    xlab(NULL) +
-    geom_col(show.legend = FALSE) +
-    geom_hline(yintercept = 50) +
-    geom_text(aes(county, rPct * 100, label = as.character(meetings)), position = position_nudge(y = 1.5)) +
-    coord_flip() +
-    scale_y_continuous(limits = c(0, 100)) +
-    scale_fill_manual(values = c("slategray3", "navyblue")) +
-    labs(title = "Iowa counties and Grassley public town hall counts by Trump vote %",
-         subtitle = "Counties with zero public town halls since 2011 highlighted",
-         y = "Trump Vote %")
-
 # Total town halls by year plot
 
 townhalls_by_year <- townhall_counts %>%
@@ -325,10 +309,12 @@ townhalls_by_year <- townhall_counts %>%
   summarize(meetings = sum(count))
 
 townhalls_by_year_plot <- townhalls_by_year %>%
-  ggplot(aes(year, meetings, group = 1)) +
-  geom_line() +
+  ggplot(aes(year, meetings)) +
+  geom_col(fill = "slategray3") +
   scale_y_continuous(limits = c(0, NA)) +
   theme_minimal() +
   labs(title = "Total Grassley public town hall meetings by year 2011-2017",
        x = "Year",
        y = "Town halls")
+
+townhalls_by_year_plot
