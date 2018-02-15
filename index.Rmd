@@ -28,7 +28,7 @@ grassley_townhalls %>% mutate(day = format(as_date(date), "%A")) %>% select(day,
 
 The first thing to note is that most of these fall during normal working hours for most of Mr. Grassley's constituents, which means they would have to miss work in order to meet with their senator. The only exception was a Saturday morning town hall held in Sac County.
 
-The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, Mr. Grassley's public town hall meetings tend to be in rural areas far from most of Iowa's population centers. A possible exception was the town hall held in Boone, which is relatively close to the more heavily populated Dallas, Polk, Story, and Webster counties, but still a 50-mile drive from Des Moines.
+The other thing that is striking is where Mr. Grassley has scheduled his public town halls. As the following map shows, Mr. Grassley's public town hall meetings tend to be in rural areas far from most of Iowa's population centers. A possible exception was the town hall held in Boone, which is relatively close to the more heavily populated Dallas, Polk, Story, and Webster counties, but still a 50-mile drive (each way) from Des Moines.
 
 ### Grassley town halls vs population
 
