@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 source("grassley-townhalls.R")
 ```
 
-UPDATE: *This document has been updated with with historical data on Senator Grassley's town halls since 2011 and town halls held or schedule through February 2018.*
+UPDATE: *This document has been updated with with historical data on Senator Grassley's town halls since 2011 and town halls held or schedule through February 2018.* The previous version is available [here](previous/2017-08-20.html).
 
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
