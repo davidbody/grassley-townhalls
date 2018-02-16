@@ -316,5 +316,3 @@ townhalls_by_year_plot <- townhalls_by_year %>%
   labs(title = "Total Grassley public town hall meetings by year 2011-2017",
        x = "Year",
        y = "Town halls")
-
-townhalls_by_year_plot
