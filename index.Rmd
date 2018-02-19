@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 source("grassley-townhalls.R")
 ```
 
-UPDATE: *This document has been updated with with historical data on Senator Grassley's town halls since 2011 and town halls held or schedule through February 2018.* The previous version is available [here](previous/2017-08-20.html).
+UPDATE: *This document has been updated with town halls held or scheduled through February 2018 and with historical data on Senator Grassley's town halls since 2011.* The previous version is available [here](previous/2017-08-20.html).
 
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
@@ -53,7 +53,7 @@ So it looks like Mr. Grassley is continuing to play it safe, holding public meet
 
 ### Grassley town halls since 2011
 
-Here we combine data from a [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) compiled by [Progress Iowa](http://progressiowa.org/) on Mr. Grassley's town halls from 2011 through 2017 with his 2018 town halls held or scheduled to date. The map shows the total number of Mr. Grassley's public town halls in each county since 2011.
+Here we combine our data on town halls since August 2017 with data from a [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) compiled by [Progress Iowa](http://progressiowa.org/) on Mr. Grassley's town halls since 2011. The map and chart show the total number of Mr. Grassley's public town halls in each county from 2011 through February 2018 along with county population.
 
 ```{r, echo=FALSE}
 townhall_count_map
@@ -79,23 +79,9 @@ townhalls_by_year_plot
 
 Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls statewide in 2017.
 
-It appears the 99-county "full Grassley" may not be quite what is used to be.
+It looks like the 99-county "full Grassley" isn't quite what is used to be.
 
 <br/>
-
-#### Supplemental data
-
-Data used for the population and Trump vote percent maps in tabular form.
-
-```{r, echo=FALSE}
-library(knitr)
-grassley_townhalls %>%
-    mutate(trump_vote = sprintf("%1.2f%%", 100 * rPct)) %>%
-    select(date, location, county, county_population, trump_vote) %>%
-    kable(caption = "Grassley town hall summary",
-          col.names = c("Date", "Location", "County", "County Population", "County Trump Vote"),
-          align = "lllrr")
-```
 
 Updated `r format(file.mtime("index.Rmd"), "%B %e, %Y")`
 
@@ -106,7 +92,7 @@ Data sources:
 * Town halls from [The Town Hall Project](https://townhallproject.com/) and from [Senator Grassley's web site](https://www.grassley.senate.gov/news)
 * Historical town hall counts from [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) by [Progress Iowa](http://progressiowa.org/).
 
-Source code: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
+Source code and data: [https://github.com/davidbody/grassley-townhalls](https://github.com/davidbody/grassley-townhalls)
 
 Author: [David W. Body](https://twitter.com/david_body)
 
