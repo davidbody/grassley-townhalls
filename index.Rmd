@@ -11,7 +11,9 @@ knitr::opts_chunk$set(echo = TRUE)
 source("grassley-townhalls.R")
 ```
 
-UPDATE: *This document has been updated with town halls held or scheduled through February 2018 and with historical data on Senator Grassley's town halls since 2011.* The previous version is available [here](previous/2017-08-20.html).
+UPDATE April 2018: *This document has been updated with town halls scheduled through May 2018.* The previous version is available [here](previous/2018-02-19.html).
+
+UPDATE February 2018: *This document has been updated with town halls held or scheduled through February 2018 and with historical data on Senator Grassley's town halls since 2011.* The previous version is available [here](previous/2017-08-20.html).
 
 Senator Chuck Grassley famously claims he visits all 99 Iowa counties every year. The "full Grassley" has become a standard other politicians try to meet, and some do. It's interesting, however, that Grassley isn't quite as accessible as he would have you think.
 
@@ -38,7 +40,7 @@ pop_map
 
 Click on the town hall markers and counties for more information.
 
-Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all of the counties hosting Grassley's public town halls, and got more than 60% of the vote in all but Boone County.
+Mr. Grassley is a strong supporter of Donald Trump, so it's also interesting to look at how well Trump did in these counties in the 2016 election. The answer is very well. Trump won all of the counties hosting Grassley's public town halls, and got more than 60% of the vote in all but Boone, Chickasaw, and Jackson counties.
 
 
 ### Grassley town halls vs Trump vote %
@@ -53,7 +55,7 @@ So it looks like Mr. Grassley is continuing to play it safe, holding public meet
 
 ### Grassley town halls since 2011
 
-Here we combine our data on town halls since August 2017 with data from a [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) compiled by [Progress Iowa](http://progressiowa.org/) on Mr. Grassley's town halls since 2011. The map and chart show the total number of Mr. Grassley's public town halls in each county from 2011 through February 2018 along with county population.
+Here we combine our data on town halls since August 2017 with data from a [report](https://www.scribd.com/document/318247533/REPORT-The-Fake-Grassley) compiled by [Progress Iowa](http://progressiowa.org/) on Mr. Grassley's town halls since 2011. The map and chart show the total number of Mr. Grassley's public town halls in each county from 2011 through May 2018 along with county population.
 
 ```{r, echo=FALSE}
 townhall_count_map
