@@ -284,10 +284,11 @@ townhall_count_map <- census_df %>%
   addLabelOnlyMarkers(lng = ~ lon, lat = ~ lat,
                       label = ~ as.character(meetings),
                       labelOptions = labelOptions(noHide = T,
-                                                  direction = 'top',
+                                                  direction = 'center',
                                                   textOnly = T,
                                                   style = list(
-                                                    "font-size" = "20px"
+                                                    "font-size" = "20px",
+                                                    "font-weight" = "bold"
                                                   )))
 
 # County population bar chart
@@ -324,3 +325,4 @@ townhalls_by_year_plot <- townhalls_by_year %>%
   labs(title = "Total Grassley public town hall meetings by year 2011-2017",
        x = "Year",
        y = "Town halls")
+
