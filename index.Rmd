@@ -82,7 +82,7 @@ pop_bars
 townhalls_by_year_plot
 ```
 
-Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls statewide in 2017.
+Senator Grassley held a total of `r townhalls_by_year[townhalls_by_year$year == 2017,]$meetings` public town halls statewide in 2017, with `r townhalls_by_year[townhalls_by_year$year == 2018,]$meetings` held or scheduled so far in 2018.
 
 It looks like the 99-county "full Grassley" isn't quite what is used to be.
 

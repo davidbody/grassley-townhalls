@@ -320,7 +320,6 @@ pop_bars <- census_df %>%
 # Total town halls by year plot
 
 townhalls_by_year <- townhall_counts %>%
-  filter(year < 2018) %>%
   group_by(year) %>%
   summarize(meetings = sum(count))
 
@@ -329,6 +328,7 @@ townhalls_by_year_plot <- townhalls_by_year %>%
   geom_col(fill = "slategray3") +
   scale_y_continuous(limits = c(0, NA)) +
   theme_minimal() +
-  labs(title = "Total Grassley public town hall meetings by year 2011-2017",
+  labs(title = "Total Grassley public town hall meetings by year 2011-2018",
+       subtitle = "2018 data is year-to-date",
        x = "Year",
        y = "Town halls")
