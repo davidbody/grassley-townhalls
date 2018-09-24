@@ -54,10 +54,9 @@ census_df <- iowa_census_data %>%
     select(GEOID, county, population, geometry) %>%
     inner_join(iowa_results, by = c("county" = "CountyName"))
 
-# Chuck Grassley’s August 2017 town halls. Data from https://townhallproject.com/.
-# They don’t appear to have an API.
+# Chuck Grassley’s town halls August 2017 - September 2018.
+# Data from https://townhallproject.com/ and https://www.grassley.senate.gov/news.
 # We geocode the town hall locations using the ggmap package.
-# Updated with subsequent town halls from https://www.grassley.senate.gov/news
 
 grassley_townhalls_file <- "data/grassley_townhalls.RData"
 
@@ -82,7 +81,13 @@ if (!file.exists(grassley_townhalls_file)) {
                      "Bellevue, IA",
                      "New Hampton, IA",
                      "Eagle Grove, IA",
-                     "Orange City, IA"),
+                     "Orange City, IA",
+                     "Fort Dodge, IA",
+                     "West Union, IA",
+                     "Emmetsburge, IA",
+                     "Audubon, IA",
+                     "Corning, IA",
+                     "Osceola, IA"),
         county = c("Ringgold",
                    "Taylor",
                    "O'Brien",
@@ -99,7 +104,13 @@ if (!file.exists(grassley_townhalls_file)) {
                    "Jackson",
                    "Chickasaw",
                    "Wright",
-                   "Sioux"),
+                   "Sioux",
+                   "Webster",
+                   "Fayette",
+                   "Palo Alto",
+                   "Audubon",
+                   "Adams",
+                   "Clarke"),
         date = c("2017-08-23",
                  "2017-08-24",
                  "2017-08-29",
@@ -116,7 +127,13 @@ if (!file.exists(grassley_townhalls_file)) {
                  "2018-05-1",
                  "2018-05-4",
                  "2018-05-30",
-                 "2018-05-31"),
+                 "2018-05-31",
+                 "2018-07-2",
+                 "2018-07-3",
+                 "2018-08-6",
+                 "2018-08-7",
+                 "2018-08-9",
+                 "2018-09-10"),
         time = c("3:45 PM, CDT",
                  "11:30 AM, CDT",
                  "3:45 PM, CDT",
@@ -133,7 +150,13 @@ if (!file.exists(grassley_townhalls_file)) {
                  "2:00 PM, CDT",
                  "8:00 AM, CDT",
                  "8:30 AM, CDT",
-                 "2:00 PM, CDT"),
+                 "2:00 PM, CDT",
+                 "10:00 AM, CDT",
+                 "8:30 AM, CDT",
+                 "10:15 AM, CDT",
+                 "3:30 PM, CDT",
+                 "3:45 PM, CDT",
+                 "4:15 PM CDT"),
         stringsAsFactors = FALSE)
 
     # Geocode locations
