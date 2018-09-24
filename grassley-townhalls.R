@@ -315,7 +315,6 @@ townhall_count_map <- census_df %>%
   addLabelOnlyMarkers(lng = ~ lon, lat = ~ lat,
                       label = ~ as.character(meetings),
                       labelOptions = labelOptions(noHide = T,
-                                                  direction = 'top',
                                                   textOnly = T,
                                                   style = list(
                                                     "font-size" = "20px"
@@ -352,6 +351,5 @@ townhalls_by_year_plot <- townhalls_by_year %>%
   scale_y_continuous(limits = c(0, NA)) +
   theme_minimal() +
   labs(title = "Total Grassley public town hall meetings by year 2011-2018",
-       subtitle = "2018 data is year-to-date",
        x = "Year",
        y = "Town halls")
